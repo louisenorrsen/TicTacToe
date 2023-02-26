@@ -35,6 +35,12 @@ namespace TicTacToe
         /// </summary>
         private bool mGameEnded;
 
+        /// <summary>
+        /// Count number of rounds
+        /// </summary>
+
+        private int roundsPlayed;
+
         #endregion
 
         #region Constructor
@@ -54,6 +60,10 @@ namespace TicTacToe
 
         private void NewGame()
         {
+            // Adds one Round to the counter 
+            
+            counterRounds.Content = roundsPlayed;
+
             // Create a new blank array of free cells
             mResults = new MarkType[9];
 
@@ -66,7 +76,7 @@ namespace TicTacToe
             mPlayer1Turn = true;
 
             //Iterate every button on the grid
-            Container.Children.Cast<Button>().ToList().ForEach(button =>
+            Container.Children.OfType<Button>().Cast<Button>().ToList().ForEach(button =>
             {
                 // Change background, foreground and content to default values
                 button.Content = string.Empty;
@@ -98,7 +108,7 @@ namespace TicTacToe
             // Find the buttons position in the array
             var column = Grid.GetColumn(button);
             var row = Grid.GetRow(button);
-            var index = column + (row * 3);
+            var index = column + ((row - 1) * 3);
 
             // Don't do anything if the cell already has a value in it
             if (mResults[index] != MarkType.Free) return;
@@ -131,18 +141,21 @@ namespace TicTacToe
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
             if (mResults[3] != MarkType.Free && (mResults[3] & mResults[4] & mResults[5]) == mResults[3])
             {
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button0_1.Background = Button1_1.Background = Button2_1.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
             if (mResults[6] != MarkType.Free && (mResults[6] & mResults[7] & mResults[8]) == mResults[6])
             {
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button0_2.Background = Button1_2.Background = Button2_2.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
             #endregion
 
@@ -154,18 +167,21 @@ namespace TicTacToe
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button0_0.Background = Button0_1.Background = Button0_2.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
             if (mResults[1] != MarkType.Free && (mResults[1] & mResults[4] & mResults[7]) == mResults[1])
             {
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button1_0.Background = Button1_1.Background = Button1_2.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
             if (mResults[2] != MarkType.Free && (mResults[2] & mResults[5] & mResults[8]) == mResults[2])
             {
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button2_0.Background = Button2_1.Background = Button2_2.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
 
             #endregion
@@ -178,22 +194,25 @@ namespace TicTacToe
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button0_0.Background = Button1_1.Background = Button2_2.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
             if (mResults[2] != MarkType.Free && (mResults[2] & mResults[4] & mResults[6]) == mResults[2])
             {
                 mPlayerWon = true;
                 mGameEnded = true;
                 Button2_0.Background = Button1_1.Background = Button0_2.Background = Brushes.PeachPuff;
+                roundsPlayed++;
             }
 
             #endregion
             if (!mResults.Any(result => result == MarkType.Free) && !mPlayerWon)
             {
                 mGameEnded = true;
-                Container.Children.Cast<Button>().ToList().ForEach(button =>
+                Container.Children.OfType<Button>().Cast<Button>().ToList().ForEach(button =>
                 {
-                    button.Background = Brushes.PeachPuff;
+                    button.Background = Brushes.PeachPuff;                    
                 });
+                roundsPlayed++;
             }
         }
     }

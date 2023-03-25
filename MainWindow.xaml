@@ -72,7 +72,7 @@
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="#FFFBECDF"></Border>
 
         <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" >
-            <Label Content="ROUNDS" FontSize="30" HorizontalAlignment="Center" RenderTransformOrigin="20,0">
+            <Label Content="ROUND" Foreground="#FFE6B182" FontSize="30" HorizontalAlignment="Center" RenderTransformOrigin="20,0">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -82,7 +82,7 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <Label Content="2" FontSize="30" FontWeight="Bold" Foreground="#FFE6B182" Name="counterRounds" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Label Content="1" FontSize="30" FontWeight="Bold" Foreground="#FFE6B182" Name="counterRounds" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -92,7 +92,51 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-        </StackPanel> 
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" >
+            <Label Content="Player X" Foreground="DarkSlateGray" FontSize="30" HorizontalAlignment="Center" RenderTransformOrigin="20,0">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="10"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label Content="0" FontSize="30" FontWeight="Bold" Foreground="DarkSlateGray" Name="player1Points" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-10"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" >
+            <Label Content="Player O" Foreground="OrangeRed" FontSize="30" HorizontalAlignment="Center" RenderTransformOrigin="20,0">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="10"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label Content="0" FontSize="30" FontWeight="Bold" Foreground="OrangeRed" Name="player2Points" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-10"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </StackPanel>
 
         <Button Template="{DynamicResource ButtonTemplate1}" x:Name="Button0_0" Grid.Column="0" Grid.Row="1" Click="Button_Click"/>
         <Button Template="{DynamicResource ButtonTemplate1}" x:Name="Button1_0" Grid.Column="1" Grid.Row="1" Click="Button_Click"/>
